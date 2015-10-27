@@ -15,14 +15,9 @@ class MyNumber(object):
         """
         while True:
             start_value = random.randint(_MIN_BASE, _MAX_BASE)
-            assert len(str(start_value)) == 11
             start_value_reverse = MyNumber._revers_int(start_value)
             check_sum = MyNumber.get_check_sum(start_value_reverse)
-            assert check_sum <= 9
             my_number = start_value * 10 + check_sum
-            assert len(str(my_number)) == 12
-            assert str(start_value) in str(my_number)
-            assert MyNumber.validate(my_number)
             yield my_number
 
     @classmethod
@@ -79,7 +74,6 @@ class MyNumber(object):
         _result = 0
         for p in list(str(inspection)):
             p = int(p)
-            print p, n, q(n)
             _result += p * q(n)
             n += 1
         surplus = _result % 11
@@ -94,13 +88,10 @@ class MyNumber(object):
         :param number: int
         :rtype : list(int, int)
         """
-        # print "divide", number
         cls._check(number)
         check_sum = int(str(number)[11])
         _base = int(str(number)[0:11])
-        print "divide", number, _base, check_sum
         inspection = cls._revers_int(_base)
-        print "divide", number, _base, check_sum, inspection
         return inspection, check_sum
 
     @classmethod
