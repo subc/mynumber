@@ -14,6 +14,9 @@ def test_validate():
     num = 123456789018
     assert MyNumber.validate(num), MyNumber.validate(num)
 
+    num = 190852597007
+    assert MyNumber.validate(num), MyNumber.validate(num)
+
 
 def test_iter():
     ct = 1

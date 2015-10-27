@@ -10,7 +10,7 @@ Installation
 
 .. code-block:: bash
 
-    $ pip install japan_holiday
+    $ pip install mynumber
 
 Sample Code
 -----------------

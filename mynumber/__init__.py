@@ -2,4 +2,4 @@
 from __future__ import absolute_import, unicode_literals
 from .mynumber import MyNumber
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'

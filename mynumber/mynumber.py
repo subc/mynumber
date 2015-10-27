@@ -54,6 +54,7 @@ class MyNumber(object):
         """
         cls._check(number)
         inspection, check_sum = cls.divide(number)
+        # print number, inspection, check_sum
         return bool(cls.get_check_sum(inspection) == check_sum)
 
     @classmethod
@@ -70,13 +71,14 @@ class MyNumber(object):
                 return _n - 5
             raise ValueError, "N is invalid data", _n
 
-        n = 1
+        n = 12 - len(str(inspection))
         _result = 0
         for p in list(str(inspection)):
             p = int(p)
             _result += p * q(n)
             n += 1
         surplus = _result % 11
+        # print "surplus", surplus
         if surplus <= 1:
             return 0
         return 11 - surplus
