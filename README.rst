@@ -40,7 +40,5 @@ Documentation
 - `My Number Law`_
 - 日本語ドキュメント: `Japanese Document`_
 
-.. _`GoogleAPI token`: http://www.php-factory.net/calendar_form/google_api.php
-.. _`White Paper`: http://qiita.com/haminiku/items/3c8f0d43d82c0d58d7da
-.. _`Japanese Document`: http://qiita.com/haminiku/items/3c8f0d43d82c0d58d7da
+.. _`Japanese Document`: http://qiita.com/haminiku/items/bcf4bac82bd1ca62c746
 .. _`My Number Law`: http://www.soumu.go.jp/main_content/000327387.pdf

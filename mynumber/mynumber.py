@@ -14,10 +14,9 @@ class MyNumber(object):
         :rtype :int
         """
         while True:
-            start_value = random.randint(_MIN_BASE, _MAX_BASE)
-            start_value_reverse = MyNumber._revers_int(start_value)
-            check_sum = MyNumber.get_check_sum(start_value_reverse)
-            my_number = start_value * 10 + check_sum
+            seed = random.randint(_MIN_BASE, _MAX_BASE)
+            seed_reverse = MyNumber._revers_int(seed)
+            my_number = seed * 10 + MyNumber.get_check_sum(seed_reverse)
             yield my_number
 
     @classmethod
@@ -27,20 +26,21 @@ class MyNumber(object):
         :param count:
         :return:
         """
-        if count > 10000000:
+        _max = 10000000
+        if count > _max:
             raise ValueError, "count is large value"
 
-        # generate
+        # generate My Number by Duplicate No
         result = defaultdict(int)
-        loop_count = 0
+        depth = 0
         for number in cls():
             result[number] += 1
-            loop_count += 1
-
-            if loop_count > 10000000 * 10:
-                raise AssertionError
             if len(result) >= count:
                 return result
+            if depth > _max * 100:
+                raise ValueError
+            else:
+                depth += 1
 
     @classmethod
     def validate(cls, number):
@@ -54,7 +54,6 @@ class MyNumber(object):
         """
         cls._check(number)
         inspection, check_sum = cls.divide(number)
-        # print number, inspection, check_sum
         return bool(cls.get_check_sum(inspection) == check_sum)
 
     @classmethod
@@ -74,11 +73,9 @@ class MyNumber(object):
         n = 12 - len(str(inspection))
         _result = 0
         for p in list(str(inspection)):
-            p = int(p)
-            _result += p * q(n)
+            _result += int(p) * q(n)
             n += 1
         surplus = _result % 11
-        # print "surplus", surplus
         if surplus <= 1:
             return 0
         return 11 - surplus
@@ -92,8 +89,7 @@ class MyNumber(object):
         """
         cls._check(number)
         check_sum = int(str(number)[11])
-        _base = int(str(number)[0:11])
-        inspection = cls._revers_int(_base)
+        inspection = cls._revers_int(int(str(number)[0:11]))
         return inspection, check_sum
 
     @classmethod
@@ -103,9 +99,7 @@ class MyNumber(object):
         :param number: int
         :rtype : int
         """
-        _base = list(str(number))
-        _base.reverse()
-        return int("".join(_base))
+        return int(str(number)[::-1])
 
     @classmethod
     def _check(cls, number):
